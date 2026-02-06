@@ -1,4 +1,5 @@
 export interface Cliente {
+    // comentarios 
     idCliente: number;      
     nombre: string;          
     apellido: string;       
