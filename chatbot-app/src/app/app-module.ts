@@ -16,7 +16,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { CombosComponent } from './components/combos/combos';
 import { EquiposComponent } from './components/equipos/equipos';
-import { SedesComponent } from './components/sedes/sedes'
+import { SedesComponent } from './components/sedes/sedes';
+import { ReservasComponent } from './components/reservas/reservas';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatSelectModule} from '@angular/material/select';
+import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule,} from '@angular/material/datepicker'
 
 
 @NgModule({
@@ -26,6 +31,7 @@ import { SedesComponent } from './components/sedes/sedes'
     CombosComponent,
     EquiposComponent,
     SedesComponent,
+    ReservasComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,11 +45,17 @@ import { SedesComponent } from './components/sedes/sedes'
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
+    MatDatepickerModule
   ],
   bootstrap: [App]
 })
