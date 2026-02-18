@@ -4,8 +4,7 @@ import { Equipo } from "./equipos.model";
 import { Combos } from "./combos.model";
 
 export interface Reserva {
-
-  idReservas: number;
+  idReservas?: number;
   fechaReservas: string;
   horaRegistro: string;
   estado: string;
@@ -14,6 +13,5 @@ export interface Reserva {
   sedes: Sede;
   equipos: Equipo;
   combo: Combos;
-
-  [key: string]: any;
+  imagen?: string;
 }

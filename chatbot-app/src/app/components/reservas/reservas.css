@@ -14,3 +14,13 @@
     padding: 5px;
     border-radius: 4px;
 }
+
+.imagen-reserva{
+    width: auto;
+    height: 300px;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    border-radius: 4px;
+}

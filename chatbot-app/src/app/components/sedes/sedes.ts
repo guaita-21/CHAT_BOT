@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Sede } from '../../model/sedes.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
 import { SedesService } from '../../services/sedes';
 import Swal from 'sweetalert2';
 import { NgForm } from '@angular/forms';
@@ -18,16 +19,19 @@ export class SedesComponent implements OnInit {
   @ViewChild('formularioSedes') formularioSedes!: ElementRef;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('modalSede') modalSede!: TemplateRef<any>;
+  @ViewChild('modalDetalles') modalDetalles!: TemplateRef<any>;
 
   sedes: Sede[] = [];
   sede: Sede = {} as Sede;
+  sedeSeleccionada: Sede = {} as Sede;
   editar: boolean = false;
   idEditar: number | null = null;
 
   dataSource!: MatTableDataSource<Sede>;
   mostrarColumnas: string[] = ['idSedes', 'nombre', 'direccion', 'telefono', 'acciones'];
 
-  constructor(private sedesService: SedesService) {}
+  constructor(private sedesService: SedesService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.findAll();
@@ -165,5 +169,37 @@ save(): void {
   applyFilter(event: Event): void {
     const filtro = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filtro.trim().toLowerCase();
+  }
+
+  // Métodos para manejar modales
+  abrirModalAgregar(): void {
+    this.sede = {} as Sede;
+    this.editar = false;
+    this.dialog.open(this.modalSede, { width: '600px' });
+  }
+
+  abrirModalEditar(sede: Sede): void {
+    this.sede = { ...sede };
+    this.editar = true;
+    this.idEditar = sede.idSedes;
+    this.dialog.open(this.modalSede, { width: '600px' });
+  }
+
+  abrirDetalles(sede: Sede): void {
+    this.sedeSeleccionada = { ...sede };
+    this.dialog.open(this.modalDetalles, { width: '600px' });
+  }
+
+  guardarSede(): void {
+    if (this.editar && this.idEditar !== null) {
+      this.update();
+    } else {
+      this.save();
+    }
+    this.dialog.closeAll();
+  }
+
+  cerrarModal(): void {
+    this.dialog.closeAll();
   }
 }

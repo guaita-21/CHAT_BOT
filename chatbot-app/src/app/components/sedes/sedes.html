@@ -1,59 +1,10 @@
 <div class="container mt-4" #formularioSedes>
-    <h2>{{ editar ? 'Editar Sede' : 'Agregar Sede' }}</h2>
+    <h2>Gestión de Sedes</h2>
 
-    <form (ngSubmit)="guardar(formSede)" #formSede="ngForm" novalidate>
-        <div class="row">
-
-            <div class="col-md-4 mb-2">
-                <input class="form-control"
-                       type="text"
-                       placeholder="Nombre de la Sede"
-                       [(ngModel)]="sede.nombre"
-                       name="nombre"
-                       required
-                       #nombre="ngModel"
-                       [ngClass]="{'is-invalid' : nombre.invalid && nombre.touched}">
-            </div>
-
-            <div class="col-md-4 mb-2">
-                <input class="form-control"
-                       type="text"
-                       placeholder="Dirección"
-                       [(ngModel)]="sede.direccion"
-                       name="direccion"
-                       required
-                       #direccion="ngModel"
-                       [ngClass]="{'is-invalid' : direccion.invalid && direccion.touched}">
-            </div>
-
-            <div class="col-md-4 mb-2">
-                <input class="form-control"
-                       type="text"
-                       placeholder="Teléfono"
-                       [(ngModel)]="sede.telefono"
-                       name="telefono"
-                       required
-                       #telefono="ngModel"
-                       [ngClass]="{'is-invalid' : telefono.invalid && telefono.touched}">
-            </div>
-
-        </div>
-
-        <button type="submit"
-                class="btn btn-primary me-2"
-                [disabled]="formSede.invalid">
-            <mat-icon>{{ editar ? 'edit' : 'add' }}</mat-icon>
-            {{ editar ? 'Actualizar' : 'Agregar' }}
-        </button>
-
-        <button type="button"
-                class="btn btn-secondary"
-                *ngIf="editar"
-                (click)="cancelarEdicion(formSede)">
-            <mat-icon>close</mat-icon>
-            Cancelar
-        </button>
-    </form>
+    <button mat-raised-button color="primary" (click)="abrirModalAgregar()" class="mb-3">
+        <mat-icon>add</mat-icon>
+        Agregar Sede
+    </button>
 
     <hr class="my-4" />
 
@@ -89,7 +40,10 @@
                 <th mat-header-cell *matHeaderCellDef>Acciones</th>
                 <td mat-cell *matCellDef="let s">
                     <div class="d-flex gap-1">
-                        <button class="btn btn-warning btn-sm me-1" (click)="editarSede(s)">
+                        <button class="btn btn-info btn-sm me-1" (click)="abrirDetalles(s)">
+                            <mat-icon>visibility</mat-icon>
+                        </button>
+                        <button class="btn btn-warning btn-sm me-1" (click)="abrirModalEditar(s)">
                             <mat-icon>edit</mat-icon>
                         </button>
                         <button class="btn btn-danger btn-sm" (click)="deleteSede(s)">
@@ -107,3 +61,56 @@
         <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
     </div>
 </div>
+
+<!-- Modal para Agregar/Editar Sede -->
+<ng-template #modalSede>
+    <mat-dialog-content>
+        <h2 mat-dialog-title>{{ editar ? 'Editar Sede' : 'Agregar Sede' }}</h2>
+        <form #formSede="ngForm" novalidate>
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Nombre de la Sede</mat-label>
+                        <input matInput type="text" [(ngModel)]="sede.nombre" name="nombre" required>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-12 mb-2">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Dirección</mat-label>
+                        <input matInput type="text" [(ngModel)]="sede.direccion" name="direccion" required>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-12 mb-2">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Teléfono</mat-label>
+                        <input matInput type="text" [(ngModel)]="sede.telefono" name="telefono" required>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button mat-flat-button color="primary" (click)="guardarSede()" [disabled]="formSede.invalid">
+            {{ editar ? 'Actualizar' : 'Guardar' }}
+        </button>
+    </mat-dialog-actions>
+</ng-template>
+
+<!-- Modal para Ver Detalles de Sede -->
+<ng-template #modalDetalles>
+    <h2 mat-dialog-title>Detalles de la Sede</h2>
+    <mat-dialog-content>
+        <div class="detalles-sede">
+            <p><strong>ID:</strong> {{ sedeSeleccionada.idSedes }}</p>
+            <p><strong>Nombre:</strong> {{ sedeSeleccionada.nombre }}</p>
+            <p><strong>Dirección:</strong> {{ sedeSeleccionada.direccion }}</p>
+            <p><strong>Teléfono:</strong> {{ sedeSeleccionada.telefono }}</p>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button (click)="cerrarModal()">Cerrar</button>
+    </mat-dialog-actions>
+</ng-template>

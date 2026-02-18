@@ -33,4 +33,8 @@ export class ReservaService {
     return this.http.delete<void>(`${this.baseURL}/${id}`);
   }
 
+  subirImagen(formData: FormData): Observable<any> {
+    return this.http.post(`${this.baseURL}/upload`, formData);
+  }
+
 }
