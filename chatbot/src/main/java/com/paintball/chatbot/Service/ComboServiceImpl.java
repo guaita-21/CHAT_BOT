@@ -30,18 +30,24 @@ public class ComboServiceImpl implements ComboService{
 
     @Override
     public Combo update(int id, Combo combo) {
-        Optional<Combo> comboExiste =comboDAO.findById(id);
-        if (comboExiste == null){
+
+        Optional<Combo> comboExiste = comboDAO.findById(id);
+
+        if (!comboExiste.isPresent()) {
             return null;
         }
-        comboExiste.orElse(null).setIdCombo(combo.getIdCombo());
-        comboExiste.orElse(null).setNombre(combo.getNombre());
-        comboExiste.orElse(null).setIncluyeBalas(combo.getIncluyeBalas());
-        comboExiste.orElse(null).setTiempo_min(combo.getTiempo_min());
-        comboExiste.orElse(null).setPrecio(combo.getPrecio());
 
-        return comboDAO.save(comboExiste.orElse(null));
+        Combo existente = comboExiste.get();
+
+        existente.setNombre(combo.getNombre());
+        existente.setIncluyeBalas(combo.getIncluyeBalas());
+        existente.setTiempo_min(combo.getTiempo_min());
+        existente.setJugadores(combo.getJugadores());
+        existente.setPrecio(combo.getPrecio());
+
+        return comboDAO.save(existente);
     }
+
 
     @Override
     public void delete(int id) {
