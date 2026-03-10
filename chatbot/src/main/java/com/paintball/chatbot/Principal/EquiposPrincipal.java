@@ -5,6 +5,6 @@ import com.paintball.chatbot.model.Equipos;
 
 public class EquiposPrincipal {
     public static  void main(String[]args){
-        Equipos equipos= new Equipos(1,"ropa de proteccion","chaleco","Mas resistente");
+   //     Equipos equipos= new Equipos(1,"ropa de proteccion","chaleco","Mas resistente");
     }
 }

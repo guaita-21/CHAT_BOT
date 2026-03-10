@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class ComboServiceImpl implements ComboService{
+
     @Autowired
     private ComboDAO comboDAO;
 
@@ -32,10 +33,7 @@ public class ComboServiceImpl implements ComboService{
     public Combo update(int id, Combo combo) {
 
         Optional<Combo> comboExiste = comboDAO.findById(id);
-
-        if (!comboExiste.isPresent()) {
-            return null;
-        }
+        if (!comboExiste.isPresent()) return null;
 
         Combo existente = comboExiste.get();
 
@@ -45,9 +43,12 @@ public class ComboServiceImpl implements ComboService{
         existente.setJugadores(combo.getJugadores());
         existente.setPrecio(combo.getPrecio());
 
+        // ✅ ESTO TE FALTABA
+        existente.setStock(combo.getStock());
+        existente.setImagen(combo.getImagen());
+
         return comboDAO.save(existente);
     }
-
 
     @Override
     public void delete(int id) {

@@ -103,4 +103,17 @@ public class Cliente {
     public void setFecharegistro(Date fecharegistro) {
         this.fecharegistro = fecharegistro;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idCliente=" + idCliente +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", cedula='" + cedula + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", correo='" + correo + '\'' +
+                ", fecharegistro=" + fecharegistro +
+                '}';
+    }
 }

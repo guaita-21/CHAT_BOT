@@ -1,35 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Equipo } from '../model/equipos.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class EquiposService {
 
-  private baseURL = "http://localhost:8080/api/equipos"
+  private url = 'http://localhost:8080/api/equipos';
 
-  constructor(private http: HttpClient){ }
+  constructor(private http: HttpClient) { }
 
-    findAll(): Observable<Equipo[]>{
-      return this.http.get<Equipo[]>(this.baseURL);
-    }
+  findAll(): Observable<Equipo[]> {
+    //console.log('Llamando a findAll() en EquiposService', this.http.get<Equipo[]>(this.url));
+    return this.http.get<Equipo[]>(this.url);
+  }
 
-    findOne(id: number): Observable<Equipo>{
-      return this.http.get<Equipo>(`${this.baseURL}/${id}`);
-    }
+  save(equipo: any): Observable<any> {
+    return this.http.post(this.url, equipo);
+  }
 
-    save(equipos: Equipo): Observable<Equipo>{
-      return this.http.post<Equipo>(this.baseURL, equipos);
-    } 
+  update(id: number, equipo: Equipo): Observable<any> {
+    return this.http.put(`${this.url}/${id}`, equipo);
+  }
 
-    update(id: number, equipos: Equipo): Observable<Equipo>{
-      return this.http.put<Equipo>(`${this.baseURL}/${id}`, equipos);
-    } 
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 
-    delete(id: number): Observable<void>{
-      return this.http.delete<void>(`${this.baseURL}/${id}`);
-    }
-  
+  subirImagen(formData: FormData): Observable<any> {
+    return this.http.post(`http://localhost:8080/api/upload-portada`, formData);
+  }
 }

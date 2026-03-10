@@ -1,0 +1,620 @@
+/* =========================
+   CONTENEDOR GENERAL
+========================= */
+.container {
+  background: #f3fbf0;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   TITULO
+========================= */
+.container h2 {
+  font-size: 30px;
+  font-weight: 800;
+  color: #246b1a;
+  text-align: center;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.container h2::after {
+  content: "";
+  display: block;
+  width: 78px;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #3fae2a, #57c13f);
+}
+
+/* =========================
+   BOTÓN AGREGAR
+========================= */
+button[mat-raised-button].mb-3 {
+  border-radius: 12px !important;
+  min-height: 44px;
+  padding: 0 18px !important;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #3fae2a, #57c13f) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 18px rgba(63, 174, 42, 0.24) !important;
+  transition: all 0.25s ease;
+}
+
+button[mat-raised-button].mb-3:hover {
+  background: linear-gradient(135deg, #30951f, #46ae31) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(63, 174, 42, 0.3) !important;
+}
+
+button[mat-raised-button].mb-3 mat-icon {
+  margin: 0;
+}
+
+/* =========================
+   DIVISOR
+========================= */
+hr.my-4 {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #cfe8c7, transparent);
+  margin: 28px 0;
+}
+
+/* =========================
+   BUSCADOR
+========================= */
+mat-form-field.w-100 {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 4px 12px 0 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   TABLA
+========================= */
+.table-responsive {
+  margin-top: 18px;
+  border-radius: 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: collapse;
+}
+
+/* CABECERA */
+th.mat-mdc-header-cell,
+th.mat-header-cell {
+  background: linear-gradient(135deg, #3fae2a, #57c13f) !important;
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 14px 12px !important;
+  white-space: nowrap;
+}
+
+/* CELDAS */
+td.mat-mdc-cell,
+td.mat-cell {
+  padding: 14px 12px !important;
+  color: #334155;
+  font-size: 14px;
+  border-bottom: 1px solid #e3f1df;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* HOVER FILAS */
+tr.mat-mdc-row:hover,
+tr.mat-row:hover {
+  background: #f4fcf1;
+  transition: background 0.2s ease;
+}
+
+/* Imagen pequeña de tabla */
+.table-responsive .img-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #d8ead2;
+  padding: 2px;
+  cursor: pointer;
+  background: #fff;
+}
+
+/* =========================
+   BOTONES DE ACCIÓN
+========================= */
+.d-flex.gap-1 {
+  display: flex;
+  align-items: center;
+  gap: 6px !important;
+  flex-wrap: nowrap;
+}
+
+.btn-sm {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.25s ease;
+  border: none;
+}
+
+.btn-sm mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* VER */
+.btn-info {
+  background: linear-gradient(135deg, #3fae2a, #57c13f);
+  color: #fff;
+  border: none;
+}
+
+.btn-info:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 16px rgba(63, 174, 42, 0.24);
+}
+
+/* EDITAR */
+.btn-warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+  border: none;
+}
+
+.btn-warning:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 16px rgba(245, 158, 11, 0.22);
+}
+
+/* ELIMINAR */
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.22);
+}
+
+/* =========================
+   PAGINADOR
+========================= */
+.table-responsive mat-paginator {
+  background: #f7fcf5 !important;
+  border-top: 1px solid #dcebd7;
+  border-radius: 0 0 18px 18px;
+}
+
+::ng-deep .mat-mdc-paginator-container {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px;
+  padding: 8px 12px !important;
+}
+
+::ng-deep .mat-mdc-paginator-page-size {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px;
+}
+
+::ng-deep .mat-mdc-paginator-range-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px;
+}
+
+::ng-deep .mat-mdc-paginator-range-label {
+  margin: 0 8px !important;
+  white-space: nowrap;
+}
+
+/* =========================
+   MODAL PRO
+========================= */
+::ng-deep .cdk-overlay-backdrop.cdk-overlay-dark-backdrop {
+  background: rgba(25, 45, 20, 0.52) !important;
+  backdrop-filter: blur(3px);
+}
+
+::ng-deep .mat-mdc-dialog-container {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+::ng-deep .mat-mdc-dialog-surface {
+  border-radius: 20px !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+  overflow: hidden !important;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28) !important;
+  border: 1px solid rgba(63, 174, 42, 0.15);
+}
+
+/* TÍTULO MODAL */
+h2[mat-dialog-title] {
+  background: linear-gradient(135deg, #3fae2a, #57c13f);
+  color: #fff;
+  margin: 0 !important;
+  padding: 22px 28px;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.2;
+  border-radius: 20px 20px 0 0;
+}
+
+/* CONTENIDO MODAL */
+mat-dialog-content {
+  display: block;
+  margin: 0 !important;
+  padding: 24px 28px !important;
+  background: #ffffff;
+}
+
+/* FOOTER MODAL */
+mat-dialog-actions {
+  margin: 0 !important;
+  padding: 18px 28px 22px 28px !important;
+  background: #f5fbf2;
+  border-top: 1px solid #e2efdd;
+  gap: 10px;
+}
+
+mat-dialog-actions button {
+  border-radius: 12px !important;
+  font-weight: 700;
+  min-height: 42px;
+  padding: 0 18px !important;
+}
+
+/* CANCELAR / CERRAR */
+mat-dialog-actions button[mat-button] {
+  color: #246b1a !important;
+  background: rgba(63, 174, 42, 0.08);
+}
+
+mat-dialog-actions button[mat-button]:hover {
+  background: rgba(63, 174, 42, 0.14);
+}
+
+/* BOTÓN GUARDAR */
+mat-dialog-actions button[mat-flat-button] {
+  background: linear-gradient(135deg, #3fae2a, #57c13f) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 18px rgba(63, 174, 42, 0.22);
+}
+
+mat-dialog-actions button[mat-flat-button]:hover {
+  background: linear-gradient(135deg, #30951f, #46ae31) !important;
+}
+
+/* =========================
+   FORMULARIO DENTRO DEL MODAL
+========================= */
+mat-dialog-content form {
+  margin: 0;
+}
+
+mat-dialog-content .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+mat-dialog-content .col-md-12,
+mat-dialog-content .col-md-6 {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+/* MAT FORM FIELD DEL MODAL */
+mat-dialog-content .mat-mdc-form-field {
+  margin-bottom: 4px;
+}
+
+mat-dialog-content .mat-mdc-text-field-wrapper {
+  border-radius: 14px !important;
+  background: #fcfefb !important;
+}
+
+mat-dialog-content .mat-mdc-form-field-focus-overlay {
+  border-radius: 14px !important;
+}
+
+/* =========================
+   CARD DE IMAGEN
+========================= */
+.card {
+  border: 1px solid #d7ebd1;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  background: linear-gradient(135deg, #3fae2a, #57c13f);
+  color: #fff;
+  border-bottom: none;
+  padding: 14px 18px;
+}
+
+.card-header h5 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card-body {
+  padding: 18px;
+}
+
+/* Input file */
+.card-body .form-control {
+  border-radius: 12px;
+  border: 1px solid #cfe7c8;
+  padding: 10px 12px;
+}
+
+/* Preview modal */
+.card-body .img-thumbnail {
+  border-radius: 14px;
+  border: 1px solid #d8ead2;
+  background: #fff;
+  padding: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  object-fit: cover;
+}
+
+/* Botón cerrar preview */
+.position-absolute.btn-danger.btn-sm {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.position-absolute.btn-danger.btn-sm mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Texto pequeño */
+small.text-muted {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* =========================
+   DETALLES DEL MODAL
+========================= */
+mat-dialog-content p {
+  margin: 10px 0;
+  font-size: 15px;
+  color: #334155;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e3f1df;
+  word-break: break-word;
+}
+
+mat-dialog-content p strong {
+  color: #246b1a;
+  font-weight: 800;
+}
+
+mat-dialog-content img[width="250"] {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #d8ead2;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+  .container {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .container h2 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .container h2 {
+    font-size: 24px;
+  }
+
+  button[mat-raised-button].mb-3 {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .table-responsive table {
+    min-width: 980px;
+  }
+
+  th.mat-mdc-header-cell,
+  th.mat-header-cell,
+  td.mat-mdc-cell,
+  td.mat-cell {
+    font-size: 13px;
+    padding: 12px 10px !important;
+  }
+
+  .btn-sm {
+    width: 36px;
+    height: 36px;
+  }
+
+  .btn-sm mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  h2[mat-dialog-title] {
+    font-size: 22px;
+    padding: 18px 20px;
+  }
+
+  mat-dialog-content {
+    padding: 20px !important;
+  }
+
+  .card-body {
+    padding: 14px;
+  }
+
+  .card-body .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .card-body .col-md-4,
+  .card-body .col-md-8,
+  .card-body .col-md-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  ::ng-deep .mat-mdc-paginator-container {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  ::ng-deep .mat-mdc-paginator-page-size,
+  ::ng-deep .mat-mdc-paginator-range-actions {
+    justify-content: center;
+  }
+
+  ::ng-deep .mat-mdc-paginator-range-label {
+    margin: 6px 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 12px;
+  }
+
+  .container h2 {
+    font-size: 21px;
+  }
+
+  .container h2::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .table-responsive table {
+    min-width: 920px;
+  }
+
+  th.mat-mdc-header-cell,
+  th.mat-header-cell,
+  td.mat-mdc-cell,
+  td.mat-cell {
+    font-size: 12px;
+    padding: 10px 8px !important;
+  }
+
+  .d-flex.gap-1 {
+    gap: 4px !important;
+  }
+
+  .btn-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .btn-sm mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  ::ng-deep .cdk-overlay-pane {
+    max-width: calc(100vw - 18px) !important;
+  }
+
+  ::ng-deep .mat-mdc-dialog-container,
+  ::ng-deep .mat-mdc-dialog-surface {
+    border-radius: 14px !important;
+  }
+
+  h2[mat-dialog-title] {
+    font-size: 20px;
+    padding: 16px 18px;
+    border-radius: 14px 14px 0 0;
+  }
+
+  mat-dialog-content {
+    padding: 16px 18px !important;
+  }
+
+  mat-dialog-actions {
+    padding: 12px 18px 18px 18px !important;
+    flex-wrap: wrap;
+  }
+
+  mat-dialog-actions button {
+    width: 100%;
+  }
+
+  mat-dialog-content .col-md-12,
+  mat-dialog-content .col-md-6 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  mat-dialog-content p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}

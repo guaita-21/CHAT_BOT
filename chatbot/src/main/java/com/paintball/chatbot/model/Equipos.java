@@ -18,16 +18,19 @@ public class Equipos {
     private String tipo;
     @Column(name = "descripcion")
     private String descripcion;
+    @Column(name = "imagen_equipo")
+    private String imagenEquipo;
 
-    public Equipos(){}
+    public Equipos() {
+    }
 
-    public Equipos(int idEquipos, String nombre, String tipo, String descripcion) {
+    public Equipos(int idEquipos, String nombre, String tipo, String descripcion, String imagenEquipo) {
         this.idEquipos = idEquipos;
         this.nombre = nombre;
         this.tipo = tipo;
         this.descripcion = descripcion;
+        this.imagenEquipo = imagenEquipo;
     }
-
 
     public int getIdEquipos() {
         return idEquipos;
@@ -61,6 +64,14 @@ public class Equipos {
         this.descripcion = descripcion;
     }
 
+    public String getImagenEquipo() {
+        return imagenEquipo;
+    }
+
+    public void setImagenEquipo(String imagenEquipo) {
+        this.imagenEquipo = imagenEquipo;
+    }
+
     @Override
     public String toString() {
         return "Equipos{" +
@@ -68,6 +79,7 @@ public class Equipos {
                 ", nombre='" + nombre + '\'' +
                 ", tipo='" + tipo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
+                ", imagenEquipo='" + imagenEquipo + '\'' +
                 '}';
     }
 }

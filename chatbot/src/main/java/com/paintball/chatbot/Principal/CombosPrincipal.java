@@ -5,17 +5,18 @@ import java.math.BigDecimal;
 
 public class CombosPrincipal {
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
 
-        Combo combo = new Combo(
-                2,
-                "HappyMoment",
-                250,
-                2,
-                5,
-                new BigDecimal("40")
-        );
+      //  Combo combo = new Combo(
+              //  2,
+             //   "HappyMoment",
+                //250,
+              //  60,
+               // 5,
+               // new BigDecimal("40"),
+               // 10
+      //  );
 
-        System.out.println(combo);
+      //  System.out.println(combo);
     }
 }

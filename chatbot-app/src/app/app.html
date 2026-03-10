@@ -1,1 +1,50 @@
-<app-reservas></app-reservas> 
+<!-- <app-reservas></app-reservas>  -->
+<!-- <app-combos></app-combos> 
+<app-equipos></app-equipos> 
+<app-sedes></app-sedes> 
+<app-reservas></app-reservas>  -->
+
+
+ <mat-sidenav-container class="shell">
+  <mat-sidenav #drawer mode="over" class="mobile-drawer">
+    <nav class="mobile-nav" (click)="drawer.close()">
+      <a mat-list-item routerLink="/comboslist"><mat-icon>shopping_cart</mat-icon> Combos </a>
+      <a mat-list-item routerLink="/clientes"><mat-icon>people</mat-icon> Cliente</a>
+      <a mat-list-item routerLink="/equipos"><mat-icon>store</mat-icon> Equipos</a>
+      <a mat-list-item routerLink="/sedes"><mat-icon>inventory_2</mat-icon> Sedes</a>
+      <a mat-list-item routerLink="/reservas"><mat-icon>medication</mat-icon> Reservas</a>
+      <a mat-list-item routerLink="/combos"><mat-icon>warehouse</mat-icon>Combos</a>     
+    </nav>  
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="topbar">
+      <button mat-icon-button class="menu-btn" (click)="drawer.toggle()" aria-label="Abrir menú">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <a mat-button class="brand" routerLink="/comboslist">
+        <mat-icon class="brand-logo" fontSet="material-icons-outlined" fontIcon="menu_book"></mat-icon>
+        <span class="brand-name" >︻╦̵̵̿╤── - -Paintball Puembo</span>
+      </a>
+
+      <nav class="links">
+        <a mat-list-item routerLink="/clientes"><mat-icon>people</mat-icon> Cliente</a>
+        <a mat-list-item routerLink="/equipos"><mat-icon>store</mat-icon> Equipos</a>
+        <a mat-list-item routerLink="/sedes"><mat-icon>inventory_2</mat-icon> Sedes</a>
+        <a mat-list-item routerLink="/reservas"><mat-icon>medication</mat-icon> Reservas</a>
+        <a mat-list-item routerLink="/combos"><mat-icon>warehouse</mat-icon> Combos</a>
+        
+      </nav>
+
+      <span class="spacer"></span>
+
+      <a mat-stroked-button color="accent" routerLink="/carrito" class="cart-btn">
+        <mat-icon>shopping_cart</mat-icon><span>Carrito</span>
+      </a>
+    </mat-toolbar>
+
+    <!-- AQUÍ va el contenido de cada página -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

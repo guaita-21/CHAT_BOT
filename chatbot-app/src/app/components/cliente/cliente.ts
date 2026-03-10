@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Cliente } from '../../model/cliente.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ClienteService } from '../../services/cliente';
 import Swal from 'sweetalert2';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cliente',
@@ -18,13 +19,17 @@ export class ClienteComponent implements OnInit {
   @ViewChild('formularioCliente') formularioCliente!: ElementRef;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('modalDetalles') modalDetalles!: TemplateRef<any>;
 
   clientes: Cliente[] = [];
   cliente: Cliente = {} as Cliente;
+  clienteSeleccionado: Cliente | null = null;
+
   editar: boolean = false;
   idEditar: number | null = null;
 
   dataSource!: MatTableDataSource<Cliente>;
+
   mostrarColumnas: string[] = [
     'idCliente',
     'cedula',
@@ -36,7 +41,10 @@ export class ClienteComponent implements OnInit {
     'acciones'
   ];
 
-  constructor(private clienteService: ClienteService) {}
+  constructor(
+    private clienteService: ClienteService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.findAll();
@@ -75,9 +83,7 @@ export class ClienteComponent implements OnInit {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si, eliminar',
-      cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6'
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.clienteService.delete(this.cliente.idCliente).subscribe(() => {
@@ -114,12 +120,19 @@ export class ClienteComponent implements OnInit {
   guardar(form: NgForm): void {
     if (this.editar && this.idEditar !== null) {
       this.update();
-      form.resetForm();
     } else {
       this.save();
-      form.resetForm();
     }
-    
+    form.resetForm();
+  }
+
+  abrirModalDetalle(cliente: Cliente): void {
+    this.clienteSeleccionado = cliente;
+    this.dialog.open(this.modalDetalles, { width: '450px' });
+  }
+
+  cerrarModal(): void {
+    this.dialog.closeAll();
   }
 
   applyFilter(event: Event): void {

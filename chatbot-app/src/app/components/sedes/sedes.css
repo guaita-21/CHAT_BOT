@@ -1,0 +1,386 @@
+/* CONTENEDOR DEL MODAL */
+::ng-deep .mat-mdc-dialog-container {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+
+/* SUPERFICIE DEL MODAL */
+::ng-deep .mat-mdc-dialog-surface {
+  border-radius: 18px !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+  overflow: hidden;
+}
+
+/* TITULO DEL MODAL */
+h2[mat-dialog-title]{
+  background: linear-gradient(135deg,#6b7d3a,#7f8f45);
+  color:#fff;
+  margin:0;
+  padding:22px 26px;
+  font-size:24px;
+  font-weight:700;
+  border-radius:18px 18px 0 0;
+}
+
+/* CONTENIDO */
+mat-dialog-content{
+  padding:24px 28px !important;
+  background:#ffffff;
+}
+
+/* FOOTER */
+mat-dialog-actions{
+  padding:18px 28px !important;
+  background:#f4f6ea;
+}
+
+/* =========================
+   BOTON AGREGAR
+========================= */
+
+button[mat-raised-button]{
+  border-radius: 12px !important;
+  min-height: 44px;
+  padding: 0 18px !important;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg,#6b7d3a,#8fa14e) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(107,125,58,0.25) !important;
+  transition: all .25s ease;
+}
+
+button[mat-raised-button]:hover{
+  background: linear-gradient(135deg,#5a692f,#7f8f45) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(107,125,58,0.28);
+}
+
+button[mat-raised-button] mat-icon{
+  margin:0;
+}
+
+
+/* =========================
+   DIVISOR
+========================= */
+
+hr.my-4{
+  border:none;
+  height:1px;
+  background:linear-gradient(to right,transparent,#c7cfab,transparent);
+  margin:28px 0;
+}
+
+
+/* =========================
+   BUSCADOR
+========================= */
+
+mat-form-field.w-100{
+  background:#fff;
+  border-radius:14px;
+  padding:4px 12px 0 12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+
+/* =========================
+   TABLA
+========================= */
+
+.table-responsive{
+  margin-top:18px;
+  border-radius:16px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  background:#fff;
+  box-shadow:0 8px 22px rgba(0,0,0,0.08);
+}
+
+.table-responsive table{
+  width:100%;
+  min-width:700px;
+}
+
+
+/* CABECERA */
+
+th.mat-mdc-header-cell{
+  background:linear-gradient(135deg,#6b7d3a,#7f8f45) !important;
+  color:#fff !important;
+  font-size:14px;
+  font-weight:700;
+  padding:14px 12px !important;
+}
+
+
+/* CELDAS */
+
+td.mat-mdc-cell{
+  padding:14px 12px !important;
+  font-size:14px;
+  border-bottom:1px solid #e6ead7;
+}
+
+
+/* FILA HOVER */
+
+tr.mat-mdc-row:hover{
+  background:#f2f6e7;
+}
+
+
+/* =========================
+   BOTONES DE ACCION
+========================= */
+
+.d-flex.gap-1{
+  display:flex;
+  gap:6px !important;
+}
+
+
+/* BOTONES */
+
+.btn-sm{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:none;
+  transition:all .25s;
+}
+
+.btn-sm mat-icon{
+  font-size:20px;
+}
+
+
+/* VER */
+
+.btn-info{
+  background:linear-gradient(135deg,#6b7d3a,#8fa14e);
+  color:#fff;
+}
+
+.btn-info:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 16px rgba(107,125,58,0.25);
+}
+
+
+/* EDITAR */
+
+.btn-warning{
+  background:linear-gradient(135deg,#f59e0b,#d97706);
+  color:#fff;
+}
+
+.btn-warning:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 16px rgba(245,158,11,0.25);
+}
+
+
+/* ELIMINAR */
+
+.btn-danger{
+  background:linear-gradient(135deg,#ef4444,#dc2626);
+  color:#fff;
+}
+
+.btn-danger:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 16px rgba(239,68,68,0.25);
+}
+
+
+
+/* =========================
+   PAGINADOR
+========================= */
+
+.table-responsive mat-paginator{
+  background:#f8faef !important;
+  border-top:1px solid #d7dfbd;
+}
+
+::ng-deep .mat-mdc-paginator-container{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap:8px;
+  padding:10px !important;
+}
+
+
+
+/* =========================
+   MODAL
+========================= */
+
+h2[mat-dialog-title]{
+  background:linear-gradient(135deg,#6b7d3a,#7f8f45);
+  color:#fff;
+  margin:0 !important;
+  padding:20px 24px;
+  font-size:24px;
+  font-weight:700;
+  border-radius:16px 16px 0 0;
+}
+
+
+/* CONTENIDO */
+
+mat-dialog-content{
+  padding:22px 24px !important;
+  background:#fff;
+}
+
+
+/* FORM */
+
+mat-dialog-content form{
+  margin:0;
+}
+
+mat-dialog-content .row{
+  margin-left:0;
+  margin-right:0;
+}
+
+mat-dialog-content .col-md-12{
+  padding-left:0;
+  padding-right:0;
+}
+
+
+/* BOTONES MODAL */
+
+mat-dialog-actions{
+  padding:14px 24px 20px 24px !important;
+  background:#f8faef;
+}
+
+mat-dialog-actions button{
+  border-radius:10px !important;
+  font-weight:600;
+}
+
+
+
+/* =========================
+   DETALLES MODAL
+========================= */
+
+.detalles-sede{
+  padding:6px 0;
+}
+
+.detalles-sede p{
+  margin:10px 0;
+  font-size:15px;
+  color:#334155;
+  padding-bottom:8px;
+  border-bottom:1px solid #e5ead8;
+}
+
+.detalles-sede strong{
+  color:#4b5a24;
+}
+
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:992px){
+
+.container{
+padding:18px;
+}
+
+.container h2{
+font-size:24px;
+}
+
+}
+
+
+
+@media (max-width:768px){
+
+.container{
+padding:14px;
+}
+
+.container h2{
+font-size:22px;
+}
+
+button[mat-raised-button]{
+width:100%;
+justify-content:center;
+}
+
+.table-responsive table{
+min-width:650px;
+}
+
+td.mat-mdc-cell{
+font-size:13px;
+}
+
+.btn-sm{
+width:36px;
+height:36px;
+}
+
+}
+
+
+
+@media (max-width:576px){
+
+.container{
+padding:10px;
+margin-top:10px;
+}
+
+.container h2{
+font-size:20px;
+}
+
+.table-responsive table{
+min-width:600px;
+}
+
+td.mat-mdc-cell{
+font-size:12px;
+}
+
+.btn-sm{
+width:32px;
+height:32px;
+}
+
+.btn-sm mat-icon{
+font-size:16px;
+}
+
+mat-dialog-actions{
+flex-wrap:wrap;
+}
+
+mat-dialog-actions button{
+width:100%;
+}
+
+}

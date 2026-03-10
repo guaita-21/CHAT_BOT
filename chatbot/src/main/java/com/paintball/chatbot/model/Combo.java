@@ -17,7 +17,7 @@ public class Combo {
     private String nombre;
 
     @Column(name = "incluye_balas")
-    @JsonProperty("incluyeBalas")
+    //@JsonProperty("incluyeBalas")
     private int incluyeBalas;
 
     @Column(name = "tiempo_min")
@@ -29,37 +29,89 @@ public class Combo {
     @Column(name = "precio")
     private BigDecimal precio;
 
+    @Column(name = "stock")
+    private int stock;
 
-    public Combo() {}
+    @Column(name = "imagen")
+    private String imagen;  // ← BIEN: variable con minúscula
 
+    public Combo() {
+    }
 
-    public Combo(int idCombo, String nombre, int incluyeBalas, int tiempo_min, int jugadores, BigDecimal precio) {
+    public Combo(int idCombo, String nombre, int incluyeBalas, int tiempo_min, int jugadores, BigDecimal precio, int stock, String imagen) {
         this.idCombo = idCombo;
         this.nombre = nombre;
         this.incluyeBalas = incluyeBalas;
         this.tiempo_min = tiempo_min;
         this.jugadores = jugadores;
         this.precio = precio;
+        this.stock = stock;
+        this.imagen = imagen;
     }
 
+    public int getIdCombo() {
+        return idCombo;
+    }
 
-    public int getIdCombo() { return idCombo; }
-    public void setIdCombo(int idCombo) { this.idCombo = idCombo; }
+    public void setIdCombo(int idCombo) {
+        this.idCombo = idCombo;
+    }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public int getIncluyeBalas() { return incluyeBalas; }
-    public void setIncluyeBalas(int incluyeBalas) { this.incluyeBalas = incluyeBalas; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public int getTiempo_min() { return tiempo_min; }
-    public void setTiempo_min(int tiempo_min) { this.tiempo_min = tiempo_min; }
+    public int getIncluyeBalas() {
+        return incluyeBalas;
+    }
 
-    public int getJugadores() { return jugadores; }
-    public void setJugadores(int jugadores) { this.jugadores = jugadores; }
+    public void setIncluyeBalas(int incluyeBalas) {
+        this.incluyeBalas = incluyeBalas;
+    }
 
-    public BigDecimal getPrecio() { return precio; }
-    public void setPrecio(BigDecimal precio) { this.precio = precio; }
+    public int getTiempo_min() {
+        return tiempo_min;
+    }
+
+    public void setTiempo_min(int tiempo_min) {
+        this.tiempo_min = tiempo_min;
+    }
+
+    public int getJugadores() {
+        return jugadores;
+    }
+
+    public void setJugadores(int jugadores) {
+        this.jugadores = jugadores;
+    }
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
     @Override
     public String toString() {
@@ -70,6 +122,8 @@ public class Combo {
                 ", tiempo_min=" + tiempo_min +
                 ", jugadores=" + jugadores +
                 ", precio=" + precio +
+                ", stock=" + stock +
+                ", Imagen='" + imagen + '\'' +
                 '}';
     }
 }

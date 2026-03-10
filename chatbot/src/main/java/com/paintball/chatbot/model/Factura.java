@@ -29,26 +29,38 @@ public class Factura {
     @Column(name = "estado")
     private String estado;
 
-    @ManyToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
+    @Column(name = "num_factura")
+    private String num_factura;
+
+    //@ManyToOne
+    //@JoinColumn(name = "id_cliente", nullable = false)
+    //private Cliente cliente;
+
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cliente", nullable = true)
     private Cliente cliente;
 
-    @ManyToOne
-    @JoinColumn(name = "id_reserva", nullable = false)
+    //@ManyToOne
+    //@JoinColumn(name = "id_reserva", nullable = false)
+
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_reserva", nullable = true)
     private Reservas reservas;
 
-    public Factura(){}
+    public Factura() {
+    }
 
-    public Factura(int idFactura, Date fechaEmision, BigDecimal subtotal, BigDecimal iva, BigDecimal total, String estado) {
+    public Factura(int idFactura, Date fechaEmision, BigDecimal subtotal, BigDecimal iva, BigDecimal total, String estado, String num_factura, Cliente cliente, Reservas reservas) {
         this.idFactura = idFactura;
         this.fechaEmision = fechaEmision;
         this.subtotal = subtotal;
         this.iva = iva;
         this.total = total;
         this.estado = estado;
+        this.num_factura = num_factura;
+        this.cliente = cliente;
+        this.reservas = reservas;
     }
-
-    // getters y setters
 
     public int getIdFactura() {
         return idFactura;
@@ -98,6 +110,14 @@ public class Factura {
         this.estado = estado;
     }
 
+    public String getNum_factura() {
+        return num_factura;
+    }
+
+    public void setNum_factura(String num_factura) {
+        this.num_factura = num_factura;
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -123,10 +143,9 @@ public class Factura {
                 ", iva=" + iva +
                 ", total=" + total +
                 ", estado='" + estado + '\'' +
+                ", num_factura='" + num_factura + '\'' +
                 ", cliente=" + cliente +
                 ", reservas=" + reservas +
                 '}';
     }
 }
-
-

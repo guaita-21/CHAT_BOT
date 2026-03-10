@@ -64,8 +64,9 @@
 
 <!-- Modal para Agregar/Editar Sede -->
 <ng-template #modalSede>
+    <h2 mat-dialog-title>{{ editar ? 'Editar Sede' : 'Agregar Sede' }}</h2>
+
     <mat-dialog-content>
-        <h2 mat-dialog-title>{{ editar ? 'Editar Sede' : 'Agregar Sede' }}</h2>
         <form #formSede="ngForm" novalidate>
             <div class="row">
                 <div class="col-md-12 mb-2">
@@ -91,6 +92,7 @@
             </div>
         </form>
     </mat-dialog-content>
+
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Cancelar</button>
         <button mat-flat-button color="primary" (click)="guardarSede()" [disabled]="formSede.invalid">
@@ -98,7 +100,6 @@
         </button>
     </mat-dialog-actions>
 </ng-template>
-
 <!-- Modal para Ver Detalles de Sede -->
 <ng-template #modalDetalles>
     <h2 mat-dialog-title>Detalles de la Sede</h2>

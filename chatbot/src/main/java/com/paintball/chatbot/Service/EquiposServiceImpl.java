@@ -38,6 +38,7 @@ public class EquiposServiceImpl implements EquiposService{
         equiposExiste.orElse(null).setNombre(equipos.getNombre());
         equiposExiste.orElse(null).setTipo(equipos.getTipo());
         equiposExiste.orElse(null).setDescripcion(equipos.getDescripcion());
+        equiposExiste.orElse(null).setImagenEquipo(equipos.getImagenEquipo());
 
         return equiposDAO.save(equiposExiste.orElse(null));
     }

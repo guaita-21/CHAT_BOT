@@ -1,6 +1,8 @@
 <div class="container mt-4" #formularioCliente>
+
     <h2>{{ editar ? 'Editar Cliente' : 'Agregar Cliente' }}</h2>
 
+    <!-- ===================== FORMULARIO ===================== -->
     <form (ngSubmit)="guardar(formCliente)" #formCliente="ngForm" novalidate>
         <div class="row">
 
@@ -39,7 +41,6 @@
                     [ngClass]="{'is-invalid' : correo.invalid && correo.touched}">
             </div>
 
-            <!-- FECHA REGISTRO -->
             <div class="col-md-3 mb-2">
                 <input class="form-control" type="date"
                     [(ngModel)]="cliente.fecharegistro"
@@ -54,7 +55,8 @@
             {{ editar ? 'Actualizar': 'Agregar' }}
         </button>
 
-        <button type="button" class="btn btn-secondary" *ngIf="editar"
+        <button type="button" class="btn btn-secondary"
+            *ngIf="editar"
             (click)="editarClienteCancelar(formCliente)">
             <mat-icon>close</mat-icon>
             Cancelar
@@ -63,11 +65,13 @@
 
     <hr class="my-4" />
 
+    <!-- ===================== BUSCADOR ===================== -->
     <mat-form-field appearance="fill" class="w-100">
         <mat-label>Buscar</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Buscar cliente...">
     </mat-form-field>
 
+    <!-- ===================== TABLA ===================== -->
     <div class="table-responsive">
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 w-100">
 
@@ -101,30 +105,74 @@
                 <td mat-cell *matCellDef="let c">{{ c.correo }}</td>
             </ng-container>
 
-            <!-- FECHA REGISTRO TABLA -->
             <ng-container matColumnDef="fechaRegistro">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Registro</th>
-                <td mat-cell *matCellDef="let c">{{ c.fecharegistro | date:'yyyy-MM-dd' }}</td>
+                <td mat-cell *matCellDef="let c">
+                    {{ c.fecharegistro | date:'yyyy-MM-dd' }}
+                </td>
             </ng-container>
 
+            <!-- ===================== ACCIONES ===================== -->
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef>Acciones</th>
                 <td mat-cell *matCellDef="let c">
                     <div class="d-flex gap-1">
-                        <button class="btn btn-warning btn-sm me-1" (click)="editarCliente(c)">
+
+                        <!-- VER -->
+                        <button class="btn btn-info btn-sm me-1"
+                                (click)="abrirModalDetalle(c)">
+                            <mat-icon>visibility</mat-icon>
+                        </button>
+
+                        <!-- EDITAR -->
+                        <button class="btn btn-warning btn-sm me-1"
+                                (click)="editarCliente(c)">
                             <mat-icon>edit</mat-icon>
                         </button>
-                        <button class="btn btn-danger btn-sm" (click)="cliente = c; delete()">
+
+                        <!-- ELIMINAR -->
+                        <button class="btn btn-danger btn-sm"
+                                (click)="cliente = c; delete()">
                             <mat-icon>delete</mat-icon>
                         </button>
+
                     </div>
                 </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="mostrarColumnas"></tr>
             <tr mat-row *matRowDef="let row; columns: mostrarColumnas;"></tr>
+
         </table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons>
+        </mat-paginator>
     </div>
 </div>
+
+
+<!-- ===================================================== -->
+<!-- ================= MODAL DETALLES ==================== -->
+<!-- ===================================================== -->
+
+<ng-template #modalDetalles>
+    <h2 mat-dialog-title>Detalles del Cliente</h2>
+
+    <mat-dialog-content *ngIf="clienteSeleccionado">
+
+        <p><strong>ID:</strong> {{ clienteSeleccionado.idCliente }}</p>
+        <p><strong>Cédula:</strong> {{ clienteSeleccionado.cedula }}</p>
+        <p><strong>Nombre:</strong> {{ clienteSeleccionado.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ clienteSeleccionado.apellido }}</p>
+        <p><strong>Teléfono:</strong> {{ clienteSeleccionado.telefono }}</p>
+        <p><strong>Correo:</strong> {{ clienteSeleccionado.correo }}</p>
+        <p><strong>Fecha Registro:</strong> 
+            {{ clienteSeleccionado.fecharegistro | date:'yyyy-MM-dd' }}
+        </p>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button (click)="cerrarModal()">Cerrar</button>
+    </mat-dialog-actions>
+</ng-template>

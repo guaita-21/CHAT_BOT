@@ -1,0 +1,670 @@
+/* Variables de diseño Naturaleza/Paintball Realista */
+:root {
+  /* Verdes naturaleza */
+  --forest-deep: #1a3b2e;
+  --forest-dark: #2c5e3f;
+  --forest-medium: #3b7a4b;
+  --forest-light: #5f9d5f;
+  --forest-moss: #6b8c5c;
+  --forest-pine: #2d4a3b;
+  --forest-olive: #5e6f4a;
+  
+  /* Marrones tierra */
+  --earth-dark: #5d4a3a;
+  --earth-medium: #7d5e4a;
+  --earth-light: #9c7c5c;
+  --earth-clay: #b68b6b;
+  --earth-mud: #6b4f3a;
+  
+  /* Tonos camuflaje */
+  --camo-green1: #4a674a;
+  --camo-green2: #3b5e3b;
+  --camo-brown1: #8b7355;
+  --camo-brown2: #6b5540;
+  --camo-tan: #a18b68;
+  
+  /* Acentos naturaleza */
+  --moss: #7a9b6b;
+  --mushroom: #c0a080;
+  --bark: #8b5e3c;
+  --fern: #5e8c5e;
+  --mud: #4a3a2a;
+  
+  /* Efectos paintball (sutiles) */
+  --paint-splat1: rgba(200, 120, 80, 0.15);
+  --paint-splat2: rgba(160, 140, 60, 0.12);
+  --paint-splat3: rgba(100, 140, 100, 0.2);
+  
+  /* Sombras realistas */
+  --shadow-natural: 0 8px 16px rgba(0, 20, 0, 0.2);
+  --shadow-soft: 0 4px 8px rgba(40, 30, 10, 0.15);
+  --shadow-deep: 0 12px 24px rgba(0, 30, 0, 0.3);
+  
+  /* Transiciones */
+  --transition-nature: all 0.3s ease;
+}
+
+/* Fondo estilo bosque */
+.shell {
+  min-height: 100vh;
+  background: linear-gradient(165deg, 
+    var(--forest-deep) 0%, 
+    var(--forest-dark) 40%,
+    var(--forest-medium) 100%);
+  position: relative;
+}
+
+/* Textura de hojas/vegetación */
+.shell::before {
+  content: '';
+  position: fixed;  
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(90, 140, 70, 0.1) 3px, transparent 4px),
+    radial-gradient(circle at 40% 70%, rgba(120, 100, 60, 0.08) 4px, transparent 5px),
+    radial-gradient(circle at 60% 20%, rgba(70, 110, 60, 0.1) 5px, transparent 6px),
+    radial-gradient(circle at 80% 80%, rgba(100, 130, 70, 0.08) 3px, transparent 4px);
+  background-size: 100px 100px, 150px 150px, 200px 200px, 250px 250px;
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Topbar estilo tronco de árbol */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(90deg, 
+    var(--earth-dark) 0%, 
+    var(--earth-medium) 50%,
+    var(--bark) 100%);
+  box-shadow: var(--shadow-natural);
+  border-bottom: 2px solid var(--forest-moss);
+  position: relative;
+}
+
+/* Textura de corteza */
+.topbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 15px,
+    rgba(0, 0, 0, 0.05) 15px,
+    rgba(0, 0, 0, 0.05) 30px
+  );
+  pointer-events: none;
+}
+
+/* Brand estilo madera */
+.brand {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 1.2rem;
+  border-radius: 30px;
+  transition: var(--transition-nature);
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  background: rgba(70, 50, 30, 0.3);
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--earth-light);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.brand:hover {
+  transform: translateY(-2px);
+  background: rgba(90, 70, 40, 0.4);
+  border-color: var(--forest-light);
+  box-shadow: 0 5px 15px rgba(60, 100, 40, 0.4);
+}
+
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
+  transition: var(--transition-nature);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235e8c5e'%3E%3Cpath d='M12 2L2 7v10l10 5 10-5V7l-10-5zM6 12v-2l6-3 6 3v2l-6 3-6-3z'/%3E%3C/svg%3E");
+}
+
+.brand:hover .brand-logo {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px var(--forest-light));
+}
+
+.brand-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--mushroom);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+/* Espaciador con elemento natural */
+.spacer {
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.spacer::after {
+  content: '🌿';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--forest-light);
+  font-size: 1.2rem;
+  opacity: 0.6;
+  animation: leafFloat 3s infinite ease-in-out;
+}
+
+@keyframes leafFloat {
+  0%, 100% { transform: translateY(-50%) rotate(0deg); }
+  50% { transform: translateY(-60%) rotate(5deg); }
+}
+
+/* Links de navegación */
+.links {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Estilo botones Material */
+a[mat-button], 
+a[mat-stroked-button], 
+button[mat-icon-button] {
+  min-width: unset;
+  transition: var(--transition-nature) !important;
+  position: relative;
+  overflow: hidden;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Botones normales estilo madera */
+a[mat-button] {
+  padding: 0 16px;
+  background: rgba(100, 80, 50, 0.25);
+  border: 1px solid var(--earth-light);
+  border-radius: 20px !important;
+  backdrop-filter: blur(4px);
+  color: var(--mushroom) !important;
+  height: 36px;
+  line-height: 36px;
+}
+
+a[mat-button]::before {
+  content: '🌱';
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: var(--transition-nature);
+  font-size: 1rem;
+}
+
+a[mat-button]:hover::before {
+  left: 2px;
+  opacity: 1;
+}
+
+a[mat-button]:hover {
+  padding-left: 28px;
+  background: rgba(90, 120, 70, 0.3);
+  border-color: var(--forest-light);
+  color: var(--white) !important;
+}
+
+/* Botones stroked estilo paintball natural */
+a[mat-stroked-button] {
+  padding: 0 20px !important;
+  border-width: 2px !important;
+  border-radius: 25px !important;
+  border-color: var(--forest-moss) !important;
+  background: rgba(70, 100, 60, 0.15);
+  backdrop-filter: blur(4px);
+  color: var(--mushroom) !important;
+  height: 38px;
+  line-height: 34px;
+  position: relative;
+}
+
+/* Efecto de pintura natural */
+a[mat-stroked-button]::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: radial-gradient(circle at 30% 30%, var(--paint-splat1), transparent 70%);
+  border-radius: 30px;
+  opacity: 0;
+  transition: var(--transition-nature);
+  z-index: -1;
+}
+
+a[mat-stroked-button]:hover::before {
+  opacity: 1;
+}
+
+a[mat-stroked-button]:hover {
+  transform: translateY(-2px);
+  background: rgba(100, 140, 80, 0.25);
+  border-color: var(--forest-light) !important;
+  color: var(--white) !important;
+  box-shadow: 0 5px 15px rgba(60, 100, 40, 0.3);
+}
+
+/* Botones de icono estilo piedra/musgo */
+button[mat-icon-button] {
+  background: rgba(80, 70, 50, 0.3);
+  border: 1px solid var(--earth-light);
+  margin: 0 2px;
+  position: relative;
+  border-radius: 50% !important;
+  width: 40px;
+  height: 40px;
+  transition: var(--transition-nature);
+}
+
+button[mat-icon-button]::before {
+  content: '🍃';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0;
+  opacity: 0;
+  transition: var(--transition-nature);
+}
+
+button[mat-icon-button]:hover::before {
+  font-size: 1rem;
+  opacity: 1;
+  transform: rotate(15deg);
+}
+
+button[mat-icon-button]:hover {
+  border-color: var(--forest-light);
+  background: rgba(116, 197, 76, 0.3);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 15px rgba(90, 140, 70, 0.4);
+}
+
+/* Botón menú móvil */
+.menu-btn {
+  display: none;
+}
+
+/* Badge del carrito estilo fruto */
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: radial-gradient(circle at 30% 30%, var(--moss), var(--forest-dark));
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+  border: 1px solid var(--earth-light);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  animation: grow 0.3s ease-out;
+}
+
+@keyframes grow {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Móvil */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: inline-flex;
+  }
+  
+  .links {
+    display: none;
+  }
+  
+  .brand-name {
+    display: none;
+  }
+  
+  .cart-btn span {
+    display: none;
+  }
+  
+  .brand-logo {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .spacer::after {
+    content: '🌱';
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .links a span {
+    display: none;
+  }
+  
+  .links a mat-icon {
+    margin-right: 0;
+    font-size: 22px;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+  }
+  
+  .brand-name {
+    font-size: 1.1rem;
+  }
+}
+
+/* ========== DRAWER MÓVIL ========== */
+
+/* Drawer estilo cueva/refugio natural */
+::ng-deep .mat-drawer {
+  background: linear-gradient(135deg, 
+    var(--earth-dark) 0%, 
+    var(--forest-deep) 100%) !important;
+  border-right: 2px solid var(--earth-light) !important;
+  box-shadow: var(--shadow-deep) !important;
+  position: relative;
+}
+
+::ng-deep .mat-drawer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(118, 151, 69, 0.05) 0px,
+    rgba(100, 120, 70, 0.05) 20px,
+    rgba(80, 100, 60, 0.05) 20px,
+    rgba(80, 100, 60, 0.05) 40px
+  );
+  pointer-events: none;
+}
+
+::ng-deep .mat-drawer-container {
+  background: transparent !important;
+}
+
+/* Header del drawer */
+.mobile-drawer {
+  width: 280px;
+  padding: 1rem 0;
+}
+
+.mobile-drawer-header {
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: 2px solid var(--forest-moss);
+  margin-bottom: 1rem;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);
+  position: relative;
+}
+
+.mobile-drawer-header::after {
+  content: '🌲';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--forest-dark);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mushroom);
+  font-size: 1rem;
+  border: 1px solid var(--earth-light);
+}
+
+.mobile-drawer-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--forest-moss);
+  padding: 5px;
+  margin-bottom: 0.5rem;
+  background: var(--earth-dark);
+  box-shadow: 0 0 20px rgba(90, 140, 70, 0.3);
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235e8c5e'%3E%3Cpath d='M12 2L2 7v10l10 5 10-5V7l-10-5zM6 12v-2l6-3 6 3v2l-6 3-6-3z'/%3E%3C/svg%3E");
+}
+
+.mobile-drawer-title {
+  color: var(--mushroom);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0 var(--earth-dark);
+}
+
+/* Navegación móvil */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.5rem;
+}
+
+.mobile-nav a {
+  color: var(--mushroom) !important;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: var(--transition-nature);
+  position: relative;
+  background: rgba(70, 60, 40, 0.2);
+  border: 1px solid var(--earth-light);
+  font-weight: 500;
+  overflow: hidden;
+}
+
+/* Efecto de musgo creciendo */
+.mobile-nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(to top, var(--forest-moss), transparent);
+  opacity: 0.2;
+  transition: height 0.3s ease;
+  z-index: -1;
+}
+
+.mobile-nav a:hover::before {
+  height: 100%;
+}
+
+.mobile-nav a:hover {
+  transform: translateX(8px);
+  border-color: var(--forest-light);
+  background: rgba(90, 120, 70, 0.2);
+  color: var(--white) !important;
+}
+
+.mobile-nav a.active {
+  background: rgba(90, 130, 80, 0.25);
+  border-left: 4px solid var(--forest-light);
+  border-color: var(--forest-light);
+  color: var(--white) !important;
+}
+
+.mobile-nav a mat-icon {
+  margin-right: 10px;
+  font-size: 24px;
+  color: var(--forest-light);
+}
+
+/* ========== ESTILOS BASE TOPBAR ========== */
+
+/* Texto e íconos */
+.topbar a,
+.topbar a mat-icon,
+.topbar button mat-icon {
+  color: var(--mushroom) !important;
+  text-decoration: none;
+  transition: var(--transition-nature);
+}
+
+/* Material List Item */
+.topbar .mat-mdc-list-item .mdc-list-item__primary-text,
+.topbar .mat-mdc-list-item mat-icon {
+  color: var(--mushroom) !important;
+}
+
+/* Botones stroked */
+.topbar a[mat-stroked-button].mat-mdc-outlined-button {
+  border-color: var(--forest-moss) !important;
+  color: var(--mushroom) !important;
+}
+
+.topbar a[mat-stroked-button].mat-mdc-outlined-button:hover {
+  background: rgba(90, 130, 70, 0.2) !important;
+  border-color: var(--forest-light) !important;
+  color: var(--white) !important;
+}
+
+/* Hover y active */
+.topbar a:hover,
+.topbar button:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.topbar a.active {
+  background: rgba(90, 130, 70, 0.2);
+  border-radius: 20px;
+  border: 1px solid var(--forest-light);
+}
+
+.topbar a.active mat-icon {
+  color: var(--forest-light) !important;
+}
+
+/* Toolbar primaria */
+mat-toolbar.mat-primary {
+  background: linear-gradient(90deg, 
+    var(--earth-dark) 0%, 
+    var(--earth-medium) 50%,
+    var(--bark) 100%) !important;
+  color: var(--mushroom);
+  padding: 0 1rem;
+  border-bottom: 2px solid var(--forest-moss);
+}
+
+/* ========== ANIMACIONES NATURALES ========== */
+
+@keyframes growIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.topbar {
+  animation: growIn 0.5s ease-out;
+}
+
+/* Efecto de hoja cayendo */
+.leaf-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.leaf-effect::after {
+  content: '🍂';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 0;
+  opacity: 0;
+  transition: var(--transition-nature);
+  transform: rotate(0deg);
+}
+
+.leaf-effect:hover::after {
+  font-size: 1.5rem;
+  opacity: 0.6;
+  animation: leafFall 1s infinite;
+}
+
+@keyframes leafFall {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(20px, 40px) rotate(180deg); }
+}
+
+/* Scroll personalizado */
+.mobile-drawer::-webkit-scrollbar {
+  width: 5px;
+}
+
+.mobile-drawer::-webkit-scrollbar-track {
+  background: var(--earth-dark);
+}
+
+.mobile-drawer::-webkit-scrollbar-thumb {
+  background: var(--forest-moss);
+  border-radius: 5px;
+}
+
+.mobile-drawer::-webkit-scrollbar-thumb:hover {
+  background: var(--forest-light);
+}
+
+/* Efecto de luz natural */
+.natural-light {
+  position: relative;
+}
+
+.natural-light::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 240, 200, 0.1), transparent 70%);
+  pointer-events: none;
+}

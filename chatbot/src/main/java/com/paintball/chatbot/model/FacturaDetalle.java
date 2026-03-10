@@ -27,25 +27,21 @@ public class FacturaDetalle {
     @JoinColumn(name = "id_factura")
     private Factura factura;
 
+    @ManyToOne
+    @JoinColumn(name = "id_combo")
+    private Combo combo;
+
+
     public FacturaDetalle(){}
 
-    public Factura getFactura() {
-        return factura;
-    }
-
-    public void setFactura(Factura factura) {
-        this.factura = factura;
-    }
-
-    public FacturaDetalle(int idfacturaDetalle, String descripcion, int cantidad, BigDecimal precioPaquete, BigDecimal totalLinea) {
+    public FacturaDetalle(int idfacturaDetalle, String descripcion, int cantidad, BigDecimal precioPaquete, BigDecimal totalLinea, Factura factura, Combo combo) {
         this.idfacturaDetalle = idfacturaDetalle;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.precioPaquete = precioPaquete;
         this.totalLinea = totalLinea;
-    }
-
-    public FacturaDetalle(int i, int i1, String s) {
+        this.factura = factura;
+        this.combo = combo;
     }
 
     public int getIdfacturaDetalle() {
@@ -88,6 +84,22 @@ public class FacturaDetalle {
         this.totalLinea = totalLinea;
     }
 
+    public Factura getFactura() {
+        return factura;
+    }
+
+    public void setFactura(Factura factura) {
+        this.factura = factura;
+    }
+
+    public Combo getCombo() {
+        return combo;
+    }
+
+    public void setCombo(Combo combo) {
+        this.combo = combo;
+    }
+
     @Override
     public String toString() {
         return "FacturaDetalle{" +
@@ -96,6 +108,8 @@ public class FacturaDetalle {
                 ", cantidad=" + cantidad +
                 ", precioPaquete=" + precioPaquete +
                 ", totalLinea=" + totalLinea +
+                ", factura=" + factura +
+                ", combo=" + combo +
                 '}';
     }
 }

@@ -1,37 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Combos } from '../model/combos.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class CombosService {
 
-  private baseURL = "http://localhost:8080/api/combos"
+  private baseUrl = 'http://localhost:8080/api';
 
-  constructor(private http: HttpClient){ }
+  constructor(private http: HttpClient) {}
 
-    findAll(): Observable<Combos[]>{
-      return this.http.get<Combos[]>(this.baseURL);
-    }
+  findAll(): Observable<Combos[]> {
+    return this.http.get<Combos[]>(`${this.baseUrl}/combos`);
+  }
 
-    findOne(id: number): Observable<Combos>{
-      return this.http.get<Combos>(`${this.baseURL}/${id}`);
-    }
+  save(combo: Combos): Observable<any> {
+    return this.http.post(`${this.baseUrl}/combos`, combo);
+  }
 
-    save(combos: Combos): Observable<Combos>{
-      return this.http.post<Combos>(this.baseURL, combos);
-    } 
+  update(id: number, combo: Combos): Observable<any> {
+    return this.http.put(`${this.baseUrl}/combos/${id}`, combo);
+  }
 
-    update(id: number, combos: Combos): Observable<Combos>{
-      return this.http.put<Combos>(`${this.baseURL}/${id}`, combos);
-    } 
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/combos/${id}`);
+  }
 
-    delete(id: number): Observable<void>{
-      return this.http.delete<void>(`${this.baseURL}/${id}`);
-    }
-
+  // ✅ REUTILIZA el endpoint que ya te funciona
+  subirImagen(formData: FormData): Observable<any> {
+    return this.http.post(`${this.baseUrl}/upload-portada`, formData);
+  }
 }
-
-
